@@ -32,6 +32,6 @@ export default function updatePost(id, body) {
 }
 
 export default function deletePost(id) {
-  return postFetch('/posts/' + id.toString());
+  return deleteFetch('/posts/' + id.toString());
 }
 ```
