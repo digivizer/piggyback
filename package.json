@@ -1,10 +1,11 @@
 {
   "name": "piggyback",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A resource-oriented wrapper over the window.fetch API",
-  "main": "piggyback.js",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "compile": "babel piggyback.js > index.js",
+    "prepublish": "npm run compile"
   },
   "dependencies": {
     "es6-promise": "^2.3.0",
