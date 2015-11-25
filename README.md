@@ -35,3 +35,12 @@ export default function deletePost(id) {
   return deleteFetch('/posts/' + id.toString());
 }
 ```
+
+## Notes
+
+- Depends on `es6-promise` and `isomorphic-fetch` polyfills (this is handled automatically).
+- Browser auth credentials are always sent with the request.
+- HTTP error codes result in a JavaScript `Error` being thrown by default.
+- How you handle resolving and rejecting is up to you.
+
+If these defaults aren’t suitable for your use-case, consider using the `isomorphic-fetch` library directly.
