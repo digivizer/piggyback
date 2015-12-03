@@ -55,6 +55,17 @@ export function sendPut(uri, data) {
   })).then(checkStatus);
 }
 
+// Sends a PATCH with a JSON body.
+export function sendPatch(uri, data) {
+  return fetch(uri, _merge(fetchOptions, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })).then(checkStatus);
+}
+
 // Sends a DELETE request.
 export function sendDelete(uri) {
   return fetch(uri, _merge(fetchOptions, {
