@@ -1,6 +1,8 @@
 # Piggyback
 
-A resource-oriented wrapper over the window.fetch API. Defaults to JSON content type.
+A resource-oriented wrapper over the `window.fetch` API. Defaults to the JSON content type.
+
+<img src="http://i.imgur.com/xbbu240.jpg" width="640" title="Piggybacking space shuttle on 747">
 
 ## Install
 
@@ -11,28 +13,28 @@ npm install --save piggyback
 ## Usage
 
 ```js
-import { getFetch, postFetch, putFetch, deleteFetch } from 'piggyback';
+import { sendGet, sendPost, sendPut, sendDelete } from 'piggyback';
 
 export default function getPosts() {
-  return getFetch('/posts').then(function(response) {
+  return sendGet('/posts').then(function(response) {
     return response.json();
   });
 }
 
 export default function createPost(body) {
-  return postFetch('/posts', body).then(function(response) {
+  return sendPost('/posts', body).then(function(response) {
     return response.json();
   });
 }
 
 export default function updatePost(id, body) {
-  return putFetch('/posts/' + id.toString(), body).then(function(response) {
+  return sendPut('/posts/' + id.toString(), body).then(function(response) {
     return response.json();
   });
 }
 
 export default function deletePost(id) {
-  return deleteFetch('/posts/' + id.toString());
+  return sendDelete('/posts/' + id.toString());
 }
 ```
 
