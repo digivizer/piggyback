@@ -29,12 +29,12 @@ function checkStatus(response) {
 }
 
 // Fetches a JSON resource via GET.
-export function getFetch(uri) {
+export function sendGet(uri) {
   return fetch(uri, fetchOptions).then(checkStatus);
 }
 
 // Sends a POST with a JSON body.
-export function postFetch(uri, data) {
+export function sendPost(uri, data) {
   return fetch(uri, _merge(fetchOptions, {
     method: 'POST',
     headers: {
@@ -45,7 +45,7 @@ export function postFetch(uri, data) {
 }
 
 // Sends a PUT with a JSON body.
-export function putFetch(uri, data) {
+export function sendPut(uri, data) {
   return fetch(uri, _merge(fetchOptions, {
     method: 'PUT',
     headers: {
@@ -56,7 +56,7 @@ export function putFetch(uri, data) {
 }
 
 // Sends a DELETE request.
-export function deleteFetch(uri) {
+export function sendDelete(uri) {
   return fetch(uri, _merge(fetchOptions, {
     method: 'DELETE'
   })).then(checkStatus);
