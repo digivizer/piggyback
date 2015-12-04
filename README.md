@@ -13,28 +13,34 @@ npm install --save piggyback
 ## Usage
 
 ```js
-import { sendGet, sendPost, sendPut, sendDelete } from 'piggyback';
+import { sendGet, sendPost, sendPut, sendPatch, sendDelete } from 'piggyback';
 
-export default function getPosts() {
-  return sendGet('/posts').then(function(response) {
+export default function getTasks() {
+  return sendGet('/tasks').then(function(response) {
     return response.json();
   });
 }
 
-export default function createPost(body) {
-  return sendPost('/posts', body).then(function(response) {
+export default function createTask(task) {
+  return sendPost('/tasks', task).then(function(response) {
     return response.json();
   });
 }
 
-export default function updatePost(id, body) {
-  return sendPut('/posts/' + id.toString(), body).then(function(response) {
+export default function replaceTask(id, task) {
+  return sendPut('/tasks/' + id.toString(), task).then(function(response) {
     return response.json();
   });
 }
 
-export default function deletePost(id) {
-  return sendDelete('/posts/' + id.toString());
+export default function updateTask(id, task) {
+  return sendPatch('/tasks/' + id.toString(), task).then(function(response) {
+    return response.json();
+  });
+}
+
+export default function deleteTask(id) {
+  return sendDelete('/tasks/' + id.toString());
 }
 ```
 
