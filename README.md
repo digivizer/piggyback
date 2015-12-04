@@ -14,6 +14,45 @@ npm install --save piggyback
 
 ## Usage
 
+### Resource Builder
+
+The `resource` function constructs a complete set of CRUD methods to interact with a conventional HTTP API.
+
+All methods return a promise with the first argument being the [`JSON body`](https://developer.mozilla.org/en-US/docs/Web/API/Body/json) of the response.
+
+```js
+import { resource } from 'piggyback';
+
+const { getTasks, getTaskById, createTask, updateTask, deleteTask } = resource('tasks');
+
+// GET /tasks
+getTasks().then((json) => console.log(json));
+
+// GET /tasks/{id}
+getTaskById(id).then((json) => console.log(json));
+
+// POST /tasks
+createTask(task).then((json) => console.log(json));
+
+// PUT /tasks/{id}
+createTask(id, task).then((json) => console.log(json));
+
+// DELETE /tasks/{id}
+deleteTask(id);
+```
+
+### Sending HTTP Requests
+
+The following methods are provided to interact directly with JSON web APIs:
+
+- `sendGet`
+- `sendPost`
+- `sendPut`
+- `sendPatch`
+- `sendDelete`
+
+All methods return a promise that resolves to a [`Response`](https://developer.mozilla.org/en-US/docs/Web/API/Response/Response), including the [`Body` mixin of the Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Body).
+
 ```js
 import { sendGet, sendPost, sendPut, sendPatch, sendDelete } from 'piggyback';
 
