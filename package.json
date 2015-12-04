@@ -15,6 +15,7 @@
   "author": "Mark Rickerby",
   "license": "MIT",
   "devDependencies": {
+    "babel": "^6.1.18",
     "babel-core": "^6.3.2",
     "chai": "^3.4.1",
     "mocha": "^2.3.4",
