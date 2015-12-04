@@ -83,6 +83,14 @@ function buildGetOperation(resourceUri) {
   }
 }
 
+function buildGetByIdOperation(resourceUri) {
+  return function getId(id) {
+    return sendGet(`${resourceUri}/${id}`, body).then(function(response) {
+      return response.json();
+    });
+  }
+}
+
 function buildCreateOperation(resourceUri) {
   return function create(body) {
     return sendPost(resourceUri, body).then(function(response) {
@@ -105,23 +113,30 @@ function buildDeleteOperation(resourceUri) {
   }
 }
 
-// Constructs a set of resource functions.
+import { singular } from 'pluralize';
+
+const resourceMap = {};
+
+// Constructs a set of uniform functions to interact with a resource with
+// create, update, delete, and get methods.
 export function resource(name) {
+  if (resourceMap[name] !== undefined) return resourceMap[name];
+
   const resourceName = name.charAt(0).toUpperCase().concat(name.slice(1, name.length));
 
-  const resourceMap = {};
-
   const getResource = `get${resourceName}`;
-  const createResource = `create${resourceName}`;
-  const updateResource = `update${resourceName}`;
-  const deleteResource = `delete${resourceName}`;
-
+  const getResourceById = `get${singular(resourceName)}ById`;
+  const createResource = `create${singular(resourceName)}`;
+  const updateResource = `update${singular(resourceName)}`;
+  const deleteResource = `delete${singular(resourceName)}`;
   const resourceUri = `/${resourceName}`;
 
-  resourceMap[getResource] = buildGetOperation(resourceUri);
-  resourceMap[createResource] = buildCreateOperation(resourceUri);
-  resourceMap[updateResource] = buildUpdateOperation(resourceUri);
-  resourceMap[deleteResource] = buildDeleteOperation(resourceUri);
+  resourceMap[name] = {};
+  resourceMap[name][getResource] = buildGetOperation(resourceUri);
+  resourceMap[name][getResourceById] = buildGetByIdOperation(resourceUri);
+  resourceMap[name][createResource] = buildCreateOperation(resourceUri);
+  resourceMap[name][updateResource] = buildUpdateOperation(resourceUri);
+  resourceMap[name][deleteResource] = buildDeleteOperation(resourceUri);
 
-  return resourceMap;
+  return resourceMap[name];
 }

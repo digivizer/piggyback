@@ -1,6 +1,6 @@
 {
   "name": "piggyback",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "description": "A resource-oriented wrapper over the window.fetch API",
   "main": "index.js",
   "scripts": {
@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "es6-promise": "^2.3.0",
-    "isomorphic-fetch": "^2.1.0"
+    "isomorphic-fetch": "^2.1.0",
+    "pluralize": "^1.2.1"
   },
   "author": "Mark Rickerby",
   "license": "MIT",
