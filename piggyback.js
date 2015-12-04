@@ -5,8 +5,6 @@
 require('es6-promise').polyfill();
 require('isomorphic-fetch');
 
-var _merge = require('lodash.merge');
-
 // Default options for GET requests.
 var fetchOptions = {
   method: 'GET',
@@ -35,7 +33,7 @@ export function sendGet(uri) {
 
 // Sends a POST with a JSON body.
 export function sendPost(uri, data) {
-  return fetch(uri, _merge(fetchOptions, {
+  return fetch(uri, Object.assign({}, fetchOptions, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -46,7 +44,7 @@ export function sendPost(uri, data) {
 
 // Sends a PUT with a JSON body.
 export function sendPut(uri, data) {
-  return fetch(uri, _merge(fetchOptions, {
+  return fetch(uri, Object.assign({}, fetchOptions, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json'
@@ -57,7 +55,7 @@ export function sendPut(uri, data) {
 
 // Sends a PATCH with a JSON body.
 export function sendPatch(uri, data) {
-  return fetch(uri, _merge(fetchOptions, {
+  return fetch(uri, Object.assign({}, fetchOptions, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json'
@@ -68,7 +66,7 @@ export function sendPatch(uri, data) {
 
 // Sends a DELETE request.
 export function sendDelete(uri) {
-  return fetch(uri, _merge(fetchOptions, {
+  return fetch(uri, Object.assign({}, fetchOptions, {
     method: 'DELETE'
   })).then(checkStatus);
 }
