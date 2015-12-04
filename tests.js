@@ -70,3 +70,14 @@ describe('sendDelete', function() {
     });
   });
 });
+
+describe('resource', function() {
+  it('builds a set of resource functions', function(done) {
+    var api = piggyback.resource('tasks');
+    expect(api.getTasks).to.be.a('function');
+    expect(api.createTasks).to.be.a('function');
+    expect(api.updateTasks).to.be.a('function');
+    expect(api.deleteTasks).to.be.a('function');
+    done();
+  });
+});

@@ -74,3 +74,54 @@ export function sendDelete(uri) {
     method: 'DELETE'
   })).then(checkStatus);
 }
+
+function buildGetOperation(resourceUri) {
+  return function get() {
+    return sendGet(resourceUri, body).then(function(response) {
+      return response.json();
+    });
+  }
+}
+
+function buildCreateOperation(resourceUri) {
+  return function create(body) {
+    return sendPost(resourceUri, body).then(function(response) {
+      return response.json();
+    });
+  }
+}
+
+function buildUpdateOperation(resourceUri) {
+  return function update(id, body) {
+    return sendPut(`${resourceUri}/${id}`, body).then(function(response) {
+      return response.json();
+    });
+  }
+}
+
+function buildDeleteOperation(resourceUri) {
+  return function del(body) {
+    return sendDelete(resourceUri);
+  }
+}
+
+// Constructs a set of resource functions.
+export function resource(name) {
+  const resourceName = name.charAt(0).toUpperCase().concat(name.slice(1, name.length));
+
+  const resourceMap = {};
+
+  const getResource = `get${resourceName}`;
+  const createResource = `create${resourceName}`;
+  const updateResource = `update${resourceName}`;
+  const deleteResource = `delete${resourceName}`;
+
+  const resourceUri = `/${resourceName}`;
+
+  resourceMap[getResource] = buildGetOperation(resourceUri);
+  resourceMap[createResource] = buildCreateOperation(resourceUri);
+  resourceMap[updateResource] = buildUpdateOperation(resourceUri);
+  resourceMap[deleteResource] = buildDeleteOperation(resourceUri);
+
+  return resourceMap;
+}
