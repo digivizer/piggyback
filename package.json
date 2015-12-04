@@ -1,16 +1,27 @@
 {
   "name": "piggyback",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "A resource-oriented wrapper over the window.fetch API",
   "main": "index.js",
   "scripts": {
     "compile": "babel piggyback.js > index.js",
-    "prepublish": "npm run compile"
+    "prepublish": "npm run compile",
+    "test": "npm run compile && mocha --compilers js:babel-core/register tests.js"
   },
   "dependencies": {
     "es6-promise": "^2.3.0",
     "isomorphic-fetch": "^2.1.0"
   },
   "author": "Mark Rickerby",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.3.2",
+    "chai": "^3.4.1",
+    "mocha": "^2.3.4",
+    "nock": "^3.3.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maetl/piggyback"
+  }
 }
