@@ -18,7 +18,7 @@ npm install --save piggyback
 
 The `resource` function constructs a complete set of CRUD methods to interact with a conventional HTTP API.
 
-All methods return a promise with the first argument being the [`JSON body`](https://developer.mozilla.org/en-US/docs/Web/API/Body/json) of the response.
+All methods return a promise that resolves the [`JSON body`](https://developer.mozilla.org/en-US/docs/Web/API/Body/json) of the response.
 
 ```js
 import { resource } from 'piggyback';
