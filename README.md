@@ -1,5 +1,7 @@
 # Piggyback
 
+[![Build Status](https://travis-ci.org/maetl/piggyback.svg?branch=master)](https://travis-ci.org/maetl/piggyback)
+
 A resource-oriented wrapper over the `window.fetch` API. Defaults to the JSON content type.
 
 <img src="http://i.imgur.com/xbbu240.jpg" width="640" title="Piggybacking space shuttle on 747">
