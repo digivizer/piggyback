@@ -1,6 +1,6 @@
 var nock = require('nock');
 var expect = require('chai').expect;
-var piggyback = require('./index');
+var piggyback = require('./piggyback');
 
 function mockRequest() {
   return nock('http://piggyback.maetl.net');
