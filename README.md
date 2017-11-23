@@ -1,6 +1,6 @@
 # Piggyback
 
-[![Build Status](https://travis-ci.org/maetl/piggyback.svg?branch=master)](https://travis-ci.org/maetl/piggyback)
+[![Build Status](https://travis-ci.org/digivizer/piggyback.svg?branch=master)](https://travis-ci.org/maetl/piggyback)
 
 A resource-oriented wrapper over the `window.fetch` API. Defaults to the JSON content type.
 
