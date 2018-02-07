@@ -1,7 +1,7 @@
 {
   "name": "piggyback",
   "version": "0.6.0",
-  "description": "A resource-oriented wrapper over the window.fetch API",
+  "description": "A resource-oriented wrapper over the fetch API",
   "main": "index.js",
   "scripts": {
     "compile": "babel piggyback.js > index.js",
@@ -9,8 +9,7 @@
     "test": "npm run compile && mocha --compilers js:babel-core/register tests.js"
   },
   "dependencies": {
-    "es6-promise": "^2.3.0",
-    "isomorphic-fetch": "^2.1.0",
+    "cross-fetch": "^1.1.1",
     "pluralize": "^1.2.1"
   },
   "author": "Mark Rickerby",

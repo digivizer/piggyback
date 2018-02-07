@@ -1,9 +1,4 @@
-// Fetch JSON resources using a polyfill for the forthcoming
-// window.fetch specification.
-//
-// Automatically takes care of sending cookies and request headers.
-require('es6-promise').polyfill();
-require('isomorphic-fetch');
+import fetch from 'cross-fetch';
 
 // Default options for GET requests.
 const fetchOptions = {
