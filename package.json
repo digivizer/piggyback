@@ -1,6 +1,6 @@
 {
   "name": "piggyback",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "A resource-oriented wrapper over the fetch API",
   "main": "index.js",
   "scripts": {
