@@ -26,47 +26,48 @@ function checkStatus(response) {
 }
 
 // Fetches a JSON resource via GET.
-export function sendGet(uri) {
-  return fetch(uri, fetchOptions).then(checkStatus);
+export function sendGet(uri, headers={}) {
+  return fetch(uri, requestOptions({headers})).then(checkStatus);
 }
 
 // Sends a POST with a JSON body.
-export function sendPost(uri, data) {
+export function sendPost(uri, data, headers={}) {
   return fetch(uri, requestOptions({
     method: 'POST',
-    headers: {
+    headers: Object.assign({}, {
       'Content-Type': 'application/json'
-    },
+    }, headers),
     body: JSON.stringify(data)
   })).then(checkStatus);
 }
 
 // Sends a PUT with a JSON body.
-export function sendPut(uri, data) {
+export function sendPut(uri, data, headers={}) {
   return fetch(uri, requestOptions({
     method: 'PUT',
-    headers: {
+    headers: Object.assign({}, {
       'Content-Type': 'application/json'
-    },
+    }, headers),
     body: JSON.stringify(data)
   })).then(checkStatus);
 }
 
 // Sends a PATCH with a JSON body.
-export function sendPatch(uri, data) {
+export function sendPatch(uri, data, headers={}) {
   return fetch(uri, requestOptions({
     method: 'PATCH',
-    headers: {
+    headers: Object.assign({}, {
       'Content-Type': 'application/json'
-    },
+    }, headers),
     body: JSON.stringify(data)
   })).then(checkStatus);
 }
 
 // Sends a DELETE request.
-export function sendDelete(uri) {
+export function sendDelete(uri, headers={}) {
   return fetch(uri, requestOptions({
-    method: 'DELETE'
+    method: 'DELETE',
+    headers
   })).then(checkStatus);
 }
 
